@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 const SearchContainer = () => {
 	const [query, setQuery] = useState('');
 	const [suggestions, setSuggestions] = useState([]);
-	const [error, setError] = useState('');
+	const [region, setRegion] = useState('Bangalore'); // Default region
+	const [error, setError] = useState(''); // State to manage error messages
+
 
 	const fetchSuggestions = async (searchText) => {
 		if (!searchText) {
@@ -13,7 +15,7 @@ const SearchContainer = () => {
 		}
 		try {
 			const response = await fetch(
-				`http://localhost:3500/api/doctors?search=${searchText}`
+				`http://localhost:3500/api/doctors?search=${searchText}&region=${region}`
 			);
 			if (!response.ok) {
 				console.error('Failed to fetch suggestions, Status:', response.status);
@@ -41,12 +43,17 @@ const SearchContainer = () => {
 		fetchSuggestions(searchText);
 	};
 
+	const handleRegionChange = (e) => {
+		setRegion(e.target.value);
+	};
+	
+
 	return (
 		<div className="search-container">
 			<h2>Find a Doctor</h2>
 			<p>Search doctors by specialty, condition, or doctor's name</p>
 			<div className="search-box">
-				<select>
+				<select value={region} onChange={handleRegionChange}>
 					<option value="Bangalore">Bangalore</option>
 					<option value="Mumbai">Mumbai</option>
 					<option value="Chennai">Chennai</option>

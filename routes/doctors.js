@@ -4,6 +4,7 @@ const Doctor = require('../models/doctor');
 
 router.get('/doctors', async (req, res) => {
 	const search = req.query.search || '';
+	const region = req.query.region || '';
 
 	// Early return if no search term is provided
 	// if (!search.trim()) {
@@ -16,12 +17,16 @@ router.get('/doctors', async (req, res) => {
 	try {
 		const search = req.query.search || ''; // Default to empty if no search query
 		const doctors = await Doctor.find({
-			$or: [
-        { specialty: { $regex: search, $options: 'i' } },
-        { name: { $regex: search, $options: 'i' } },
+			$and: [
+				{
+					$or: [
+						{ name: { $regex: search, $options: 'i' } },
+						{ specialty: { $regex: search, $options: 'i' } },
+					],
+				},
+				{ location: { $regex: region, $options: 'i' } },
 			],
 		});
-
 		res.json(doctors);
 	} catch (error) {
 		console.error(error); // Log error for debugging
