@@ -1,0 +1,162 @@
+body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+}
+.navbar {
+	background-color: #ffffff;
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar .logo img {
+	width: 150px;
+}
+.navbar ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 30px;
+}
+.navbar ul li {
+	display: inline;
+}
+.navbar ul li a {
+	text-decoration: none;
+	color: #333;
+	font-size: 18px;
+}
+.navbar ul li a:hover {
+	color: #007bff;
+}
+.navbar .book-now {
+	background-color: #007bff;
+	color: white;
+	padding: 10px 20px;
+	text-decoration: none;
+	border-radius: 5px;
+}
+.navbar .book-now:hover {
+	background-color: #0056b3;
+}
+.hero {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	background-color: #f7f7f7;
+	padding: 50px 20px;
+}
+.hero img {
+	width: 400px;
+	margin-bottom: 30px;
+}
+.hero h1 {
+	font-size: 36px;
+	color: #004400;
+	margin-bottom: 20px;
+}
+.hero p {
+	font-size: 24px;
+	color: #333;
+}
+.search-container {
+	background-color: #ffffff;
+	padding: 40px 20px;
+	text-align: center;
+}
+.search-container h2 {
+	font-size: 28px;
+	margin-bottom: 10px;
+	color: #003580;
+}
+.search-container p {
+	font-size: 18px;
+	color: #666;
+	margin-bottom: 30px;
+}
+.search-box {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+.search-box select,
+.search-box input {
+	padding: 12px;
+	width: 250px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+.search-box button {
+	padding: 12px 25px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.search-box button:hover {
+	background-color: #0056b3;
+}
+.message-section {
+	padding: 40px 20px;
+	background-color: #f7f7f7;
+	text-align: center;
+}
+.message-section h2 {
+	font-size: 24px;
+	color: #333;
+	margin-bottom: 20px;
+}
+.message-section p {
+	font-size: 18px;
+	color: #666;
+	margin-bottom: 0;
+}
+.footer {
+	background-color: #003580;
+	color: white;
+	text-align: center;
+	padding: 20px 0;
+}
+.footer a {
+	color: white;
+	text-decoration: none;
+	margin: 0 10px;
+}
+.footer a:hover {
+	text-decoration: underline;
+}
+.suggestions-list {
+    list-style: none;
+    margin: 5px 0 0; /* Align closer to the search bar */
+    padding: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px; /* Limit the width */
+    position: absolute; /* Position relative to the parent container */
+    left: 50%; /* Align to center */
+    transform: translateX(-50%); /* Center align */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+    text-align: left; /* Keep the text aligned */
+}
+
+.suggestions-list li:hover {
+    background-color: #f4f4f4;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
