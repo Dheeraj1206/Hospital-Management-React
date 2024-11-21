@@ -3,7 +3,8 @@ const router = express.Router();
 const Doctor = require('../models/doctor');
 
 router.get('/doctors', async (req, res) => {
-	const search = req.query.search || '';
+	const searchDoctor = req.query.searchDoctor || '';
+	const searchSpeciality = req.query.searchSpeciality || '';
 	const region = req.query.region || '';
 
 	// Early return if no search term is provided
@@ -15,15 +16,12 @@ router.get('/doctors', async (req, res) => {
 	const skip = (page - 1) * limit;
 
 	try {
-		const search = req.query.search || ''; // Default to empty if no search query
+		const searchDoctor = req.query.searchDoctor || '';
+		const searchSpeciality = req.query.searchSpeciality || '';
 		const doctors = await Doctor.find({
 			$and: [
-				{
-					$or: [
-						{ name: { $regex: search, $options: 'i' } },
-						{ specialty: { $regex: search, $options: 'i' } },
-					],
-				},
+				{ specialty: { $regex: searchSpeciality, $options: 'i' } },
+				{ name: { $regex: searchDoctor, $options: 'i' } },
 				{ location: { $regex: region, $options: 'i' } },
 			],
 		});

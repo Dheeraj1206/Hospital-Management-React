@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const Navbar = () => (
     <div className="navbar">
@@ -6,10 +7,10 @@ const Navbar = () => (
             <img src="logo.png" alt="Medcare Logo" />
         </div>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Department</a></li>
-            <li><a href="#">Doctors</a></li>
-            <li><a href="#">Contact</a></li>
+        <li><Link to="/">Home</Link></li>
+            <li><Link to="/">Department</Link></li>
+            <li><Link to="/doctors">Doctors</Link></li>
+            <li><Link to="/">Contact</Link></li>
         </ul>
         <a href="#" className="book-now">Book Now</a>
     </div>

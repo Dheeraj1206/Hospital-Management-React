@@ -1,52 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SearchContainer = () => {
-	const [query, setQuery] = useState('');
-	const [suggestions, setSuggestions] = useState([]);
-	const [region, setRegion] = useState('Bangalore'); // Default region
+	const [specialtyQuery, setSpecialtyQuery] = useState('');
+	const [doctorQuery, setDoctorQuery] = useState('');
+	const [doctorSuggestions, setDoctorSuggestions] = useState([]);
+	const [specialtySuggestions, setSpecialtySuggestions] = useState([]);
+	const [region, setRegion] = useState(''); // Default region
 	const [error, setError] = useState(''); // State to manage error messages
+	const [debouncedSearch, setDebouncedSearch] = useState('');
 
+	useEffect(() => {
+		const handler = setTimeout(() => {
+			setDebouncedSearch(specialtyQuery || doctorQuery);
+		}, 500); // Delay in ms (500ms debounce)
 
-	const fetchSuggestions = async (searchText) => {
-		if (!searchText) {
-			setSuggestions([]);
-			setError(''); // Clear error on empty input
+		return () => {
+			clearTimeout(handler); // Clean up previous timeout if inputs change
+		};
+	}, [specialtyQuery, doctorQuery]);
+
+	useEffect(() => {
+		if (!debouncedSearch) {
+			setDoctorSuggestions([]);
+			setSpecialtySuggestions([]);
+			setError('');
 			return;
 		}
-		try {
-			const response = await fetch(
-				`http://localhost:3500/api/doctors?search=${searchText}&region=${region}`
-			);
-			if (!response.ok) {
-				console.error('Failed to fetch suggestions, Status:', response.status);
-				setError('Failed to fetch doctor suggestions. Please try again.');
-				return;
-			}
-			const contentType = response.headers.get('content-type');
-			if (contentType && contentType.includes('application/json')) {
+
+		const fetchSuggestions = async () => {
+			try {
+				const response = await fetch(
+					`http://localhost:3500/api/doctors?searchSpeciality=${specialtyQuery}&searchDoctor=${doctorQuery}&region=${region}`
+				);
+				if (!response.ok) {
+					console.error(
+						'Failed to fetch suggestions, Status:',
+						response.status
+					);
+					setError('Failed to fetch doctor suggestions. Please try again.');
+					return;
+				}
+				const contentType = response.headers.get('content-type');
 				const data = await response.json();
-				setSuggestions(data);
-				setError(''); // Clear error on success
-			} else {
-				console.error('Expected JSON but got:', contentType);
-				setError('Unexpected response format. Please contact support.');
+				const doctors = data.filter((doctor) => doctor.name);
+				const specialties = data.filter((doctor) => doctor.specialty);
+				setDoctorSuggestions(doctors);
+				setSpecialtySuggestions(specialties);
+				setError('');
+			} catch (error) {
+				console.error('Error fetching suggestions:', error);
+				setError('An error occurred while fetching suggestions.');
 			}
-		} catch (error) {
-			console.error('Error fetching suggestions:', error);
-			setError('An error occurred while fetching suggestions.');
-		}
+		};
+
+		fetchSuggestions();
+	}, [debouncedSearch, region, specialtyQuery, doctorQuery]);
+
+	const handleSpecialtyInputChange = (e) => {
+		const searchText = e.target.value;
+		setSpecialtyQuery(searchText);
 	};
 
-	const handleInputChange = (e) => {
+	const handleDoctorInputChange = (e) => {
 		const searchText = e.target.value;
-		setQuery(searchText);
-		fetchSuggestions(searchText);
+		setDoctorQuery(searchText);
 	};
 
 	const handleRegionChange = (e) => {
 		setRegion(e.target.value);
 	};
-	
 
 	return (
 		<div className="search-container">
@@ -54,27 +76,48 @@ const SearchContainer = () => {
 			<p>Search doctors by specialty, condition, or doctor's name</p>
 			<div className="search-box">
 				<select value={region} onChange={handleRegionChange}>
+					<option value="">All</option>
 					<option value="Bangalore">Bangalore</option>
 					<option value="Mumbai">Mumbai</option>
 					<option value="Chennai">Chennai</option>
+					<option value="Delhi">Delhi</option>
 				</select>
-				<input
-					type="text"
-					placeholder="Search by specialty or doctor's name"
-					value={query}
-					onChange={handleInputChange}
-				/>
-				<button>Search</button>
+				<div>
+					<input
+						type="text"
+						placeholder="Search by specialty"
+						value={specialtyQuery}
+						onChange={handleSpecialtyInputChange}
+					/>
+					<div className="suggestion-box">
+						{specialtyQuery && specialtySuggestions.length > 0 && (
+							<ul className="suggestions-list">
+								{specialtySuggestions.map((doctor) => (
+									<li key={doctor.specialty}>{doctor.specialty}</li>
+								))}
+							</ul>
+						)}
+					</div>
+				</div>
+				<div>
+					<input
+						type="text"
+						placeholder="Search by doctor's name"
+						value={doctorQuery}
+						onChange={handleDoctorInputChange}
+					/>
+					<div className="suggestion-box">
+						{doctorQuery && doctorSuggestions.length > 0 && (
+							<ul className="suggestions-list">
+								{doctorSuggestions.map((doctor) => (
+									<li key={doctor.name}>{doctor.name}</li>
+								))}
+							</ul>
+						)}
+					</div>
+				</div>
 			</div>
-			{suggestions.length > 0 && (
-				<ul className="suggestions-list">
-					{suggestions.map((doctor) => (
-						<li key={doctor.id}>
-							{doctor.name} - {doctor.specialty}
-						</li>
-					))}
-				</ul>
-			)}
+			{error && <p className="error-message">{error}</p>}
 		</div>
 	);
 };
