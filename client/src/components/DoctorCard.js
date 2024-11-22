@@ -28,6 +28,7 @@ const DoctorCard = ({
 				<span className="bold">Degree:</span>{' '}
 				<span className="non-bold">{degree}</span>
 			</div>
+			<button className="book-appointment-btn">Book Appointment</button>
 		</div>
 	);
 };
