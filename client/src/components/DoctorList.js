@@ -32,7 +32,8 @@ const DoctorList = () => {
                         specialty={doctor.specialty}
                         location={doctor.location}
                         experience={doctor.experience}
-                        image={doctor.image || '/images/default-doctor.png'} // Provide default image if none exists
+                        image={doctor.image || '/images/default-doctor.png'}
+                        degree={doctor.degree || '/images/default-doctor.png'}
                     />
                 ))
             ) : (
