@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DoctorCard from './DoctorCard';
+import '../styles/DoctorList.css'
 
 const DoctorList = () => {
     const [doctors, setDoctors] = useState([]);

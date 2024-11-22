@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/DoctorsCard.css'
 
 const DoctorCard = ({
 	name,

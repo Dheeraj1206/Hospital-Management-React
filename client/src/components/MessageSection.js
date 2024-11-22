@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/MessageSection.css'
 
 const MessageSection = () => (
     <div className="message-section">

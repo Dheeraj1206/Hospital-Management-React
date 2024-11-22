@@ -1,0 +1,15 @@
+.message-section {
+	padding: 40px 20px;
+	background-color: #f7f7f7;
+	text-align: center;
+}
+.message-section h2 {
+	font-size: 24px;
+	color: #333;
+	margin-bottom: 20px;
+}
+.message-section p {
+	font-size: 18px;
+	color: #666;
+	margin-bottom: 0;
+}

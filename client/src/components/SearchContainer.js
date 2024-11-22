@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/SearchContainer.css'
 
 const SearchContainer = () => {
 	const [specialtyQuery, setSpecialtyQuery] = useState('');
