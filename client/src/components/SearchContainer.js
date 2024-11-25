@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/SearchContainer.css'
+import '../styles/SearchContainer.css';
 
 const SearchContainer = () => {
 	const [specialtyQuery, setSpecialtyQuery] = useState('');
 	const [doctorQuery, setDoctorQuery] = useState('');
 	const [doctorSuggestions, setDoctorSuggestions] = useState([]);
 	const [specialtySuggestions, setSpecialtySuggestions] = useState([]);
-	const [region, setRegion] = useState(''); // Default region
-	const [error, setError] = useState(''); // State to manage error messages
+	const [region, setRegion] = useState('');
+	const [error, setError] = useState('');
 	const [debouncedSearch, setDebouncedSearch] = useState('');
 
 	useEffect(() => {
 		const handler = setTimeout(() => {
 			setDebouncedSearch(specialtyQuery || doctorQuery);
-		}, 500); // Delay in ms (500ms debounce)
+		}, 500);
 
 		return () => {
-			clearTimeout(handler); // Clean up previous timeout if inputs change
+			clearTimeout(handler);
 		};
 	}, [specialtyQuery, doctorQuery]);
 
@@ -71,6 +71,17 @@ const SearchContainer = () => {
 		setRegion(e.target.value);
 	};
 
+	const handleSpecialtyClick = (specialty) => {
+		setSpecialtyQuery(specialty); // Fill the input with the clicked specialty
+		setSpecialtySuggestions([]); // Clear suggestions after selection
+		setDebouncedSearch(''); // Reset debounced search to stop further fetching
+	};
+
+	const handleDoctorClick = (doctorName) => {
+		setDoctorQuery(doctorName); // Fill the input with the clicked doctor's name
+		setDoctorSuggestions([]); // Clear suggestions after selection
+	};
+
 	return (
 		<div className="search-container">
 			<h2>Find a Doctor</h2>
@@ -91,13 +102,20 @@ const SearchContainer = () => {
 						onChange={handleSpecialtyInputChange}
 					/>
 					<div className="suggestion-box">
-						{specialtyQuery && specialtySuggestions.length > 0 && (
+						{specialtyQuery && specialtySuggestions.length > 0 ? (
 							<ul className="suggestions-list">
 								{specialtySuggestions.map((doctor) => (
-									<li key={doctor.specialty}>{doctor.specialty}</li>
+									<li
+										key={doctor.specialty}
+										onClick={() => handleDoctorClick(doctor.specialty)}
+									>
+										{doctor.specialty}
+									</li>
 								))}
 							</ul>
-						)}
+						) : specialtyQuery && specialtySuggestions.length === 0 ? (
+							<p>No Specialty found</p>
+						) : null}
 					</div>
 				</div>
 				<div>
@@ -108,13 +126,20 @@ const SearchContainer = () => {
 						onChange={handleDoctorInputChange}
 					/>
 					<div className="suggestion-box">
-						{doctorQuery && doctorSuggestions.length > 0 && (
+						{doctorQuery && doctorSuggestions.length > 0 ? (
 							<ul className="suggestions-list">
 								{doctorSuggestions.map((doctor) => (
-									<li key={doctor.name}>{doctor.name}</li>
+									<li
+										key={doctor.name}
+										onClick={() => handleDoctorClick(doctor.name)}
+									>
+										{doctor.name}
+									</li>
 								))}
 							</ul>
-						)}
+						) : doctorQuery && doctorSuggestions.length === 0 ? (
+							<p>No doctors found</p>
+						) : null}
 					</div>
 				</div>
 			</div>

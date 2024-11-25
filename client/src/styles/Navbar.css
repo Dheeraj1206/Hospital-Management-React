@@ -7,12 +7,13 @@
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	position: fixed;
 	width: 100%;
+	max-height: 80px;
 	top: 0;
 	left: 0;
 	z-index: 1000;
 }
 .navbar .logo img {
-	width: 150px;
+	max-width: 50px;
 }
 .navbar ul {
 	list-style-type: none;
@@ -41,4 +42,88 @@
 }
 .navbar .book-now:hover {
 	background-color: #0056b3;
+}
+.navbar .book-now .desktop-book-now {
+	background-color: #007bff;
+	color: white;
+	padding: 10px 20px;
+	text-decoration: none;
+	border-radius: 5px;
+}
+
+.navbar .book-now .desktop-book-now:hover {
+	background-color: #0056b3;
+}
+.navbar .mobile-book-now {
+	display: none;
+}
+
+.menu-toggle {
+	display: none; /* Hide on larger screens */
+}
+
+@media (max-width: 768px) {
+	.navbar {
+		padding: 10px;
+	}
+
+	/* Initially hide the menu offscreen to the right */
+	.navbar ul {
+		position: fixed;
+		top: 0;
+		right: -250px; /* Hide the menu offscreen to the right */
+		height: 100%;
+		background-color: #ffffff;
+		width: 250px;
+		transition: transform 0.3s ease-in-out;
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		padding-top: 80px; /* To avoid covering the logo */
+		box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+	}
+
+	/* Show the menu when open */
+	.navbar ul.open {
+		transform: translateX(-250px); /* Slide the menu in from the right */
+	}
+
+	.navbar .menu-toggle {
+		display: block;
+		cursor: pointer;
+		font-size: 30px;
+		color: #333;
+		z-index: 1001;
+	}
+
+	.navbar .book-now {
+		width: 100%;
+		margin-top: 10px;
+		text-align: center;
+	}
+
+	.navbar .logo img {
+		max-width: 40px; /* Adjust logo size for mobile */
+	}
+	.navbar .mobile-book-now {
+		display: block;
+	}
+	.navbar .desktop-book-now{
+		display: none;
+	}
+}
+
+/* Larger tablet or small desktop */
+@media (max-width: 1024px) {
+	.navbar {
+		padding: 15px;
+	}
+
+	.navbar ul {
+		gap: 20px;
+	}
+
+	.navbar .book-now {
+		width: auto;
+	}
 }
