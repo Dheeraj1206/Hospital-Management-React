@@ -107,7 +107,7 @@ const SearchContainer = () => {
 								{specialtySuggestions.map((doctor) => (
 									<li
 										key={doctor.specialty}
-										onClick={() => handleDoctorClick(doctor.specialty)}
+										onClick={() => handleSpecialtyClick(doctor.specialty)}
 									>
 										{doctor.specialty}
 									</li>
