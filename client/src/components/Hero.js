@@ -1,8 +1,8 @@
 import React from 'react';
-import '../styles/Hero.css';
+import styles from '../styles/Hero.module.css'; // Import the CSS module
 
 const Hero = () => (
-    <div className="hero">
+    <div className={styles.hero}> {/* Apply styles from the CSS module */}
         <h1>Your body hears everything your mind says</h1>
         <p>Expert medical care from professionals you trust</p>
         <p>We offer personalized treatments designed to help you live your best life.</p>

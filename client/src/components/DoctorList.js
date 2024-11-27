@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import DoctorCard from './DoctorCard';
-import '../styles/DoctorList.css'
+import styles from '../styles/DoctorList.module.css';
 
 const DoctorList = () => {
     const [doctors, setDoctors] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchDoctors = async () => {
@@ -13,18 +15,25 @@ const DoctorList = () => {
                     const data = await response.json();
                     setDoctors(data);
                 } else {
-                    console.error('Failed to fetch doctors');
+                    setError('Failed to fetch doctors');
                 }
             } catch (error) {
-                console.error('Error fetching doctors:', error);
+                setError('Error fetching doctors');
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchDoctors();
     }, []);
 
+    if (loading) {
+        return <p>Loading doctors...</p>;
+    }
+
     return (
-        <div className="doctor-list">
+        <div className={styles['doctor-list']}>
+            {error && <p>{error}</p>}
             {doctors.length > 0 ? (
                 doctors.map((doctor) => (
                     <DoctorCard

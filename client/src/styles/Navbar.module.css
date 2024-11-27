@@ -31,17 +31,17 @@
 	font-size: 18px;
 }
 .navbar ul li a:hover {
-	color: #007bff;
+	color: #38d8d5;
 }
 .navbar .book-now {
-	background-color: #007bff;
+	background-color: #38d8d5;
 	color: white;
 	padding: 10px 20px;
 	text-decoration: none;
 	border-radius: 5px;
 }
 .navbar .book-now:hover {
-	background-color: #0056b3;
+	background-color: #00bdb9;
 }
 .navbar .book-now .desktop-book-now {
 	background-color: #007bff;

@@ -8,6 +8,8 @@ import MessageSection from './components/MessageSection';
 import Footer from './components/Footer';
 import DoctorList from './components/DoctorList';
 import ScrollToTop from './components/ScrollToTop';
+import HospitalSearch from './components/HospitalSearch';
+import HospitalList from './components/HospitalList';
 
 const App = () => {
 	return (
@@ -26,6 +28,15 @@ const App = () => {
 					}
 				/>
 				<Route path="/doctors" element={<DoctorList />} />
+				<Route
+					path="/department"
+					element={
+						<>
+							<HospitalSearch />
+							<HospitalList />
+						</>
+					}
+				/>
 			</Routes>
 			<Footer />
 		</Router>

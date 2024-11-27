@@ -1,10 +1,11 @@
 import React from 'react';
-import '../styles/Footer.css'
+import styles from '../styles/Footer.module.css'; // Import the CSS module
 
 const Footer = () => (
-    <div className="footer">
+    <div className={styles.footer}> {/* Apply styles from the CSS module */}
         <p>
-            &copy; 2024 Medcare Hospital. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            &copy; 2024 Medcare Hospital. All Rights Reserved. |{' '}
+            <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
         </p>
     </div>
 );

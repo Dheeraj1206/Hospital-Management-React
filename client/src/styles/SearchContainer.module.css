@@ -7,7 +7,7 @@
 .search-container h2 {
 	font-size: 28px;
 	margin-bottom: 10px;
-	color: #003580;
+	color: #005b80;
 }
 .search-container p {
 	font-size: 18px;
@@ -26,6 +26,9 @@
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	max-height: 48px;
+}
+.search-box input:hover,.search-box select:hover{
+	background-color: #d3c9c947;
 }
 .search-box button {
 	padding: 12px 25px;
