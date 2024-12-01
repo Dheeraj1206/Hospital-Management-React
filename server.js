@@ -26,7 +26,8 @@ mongoose
 	.catch((err) => console.error('Database connection error:', err));
 
 // Routes
-app.use('/api', require('./routes/doctors')); // Ensure this route file exists
+app.use('/doctorsApi', require('./routes/doctors')); // Ensure this route file exists
+app.use('/hospitalsApi', require('./routes/hospitals')); // Ensure this route file exists
 app.use(
 	'/images',
 	express.static(path.join(__dirname, '/client/public/images'))

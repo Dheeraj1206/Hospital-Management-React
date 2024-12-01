@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from '../styles/Navbar.module.css'; // Importing the CSS module
+import styles from '../styles/Navbar.module.css';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -24,10 +24,10 @@ const Navbar = () => {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/department">Department</Link>
+                    <Link to="/">Department</Link>
                 </li>
                 <li>
-                    <Link to="/">Hospitals</Link>
+                    <Link to="/hospitals">Hospitals</Link>
                 </li>
                 <li>
                     <Link to="/doctors">Doctors</Link>

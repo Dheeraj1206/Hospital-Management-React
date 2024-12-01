@@ -1,12 +1,12 @@
 /* HospitalSearch.module.css */
 
 .searchSection {
-	margin: 0;
+	position: relative;
 	box-sizing: border-box;
 	font-family: Arial, sans-serif;
-  }
-  
-  .searchContainer {
+}
+
+.searchContainer {
 	width: 100%;
 	display: flex;
 	align-items: center;
@@ -18,30 +18,30 @@
 	transition: transform 0.3s ease;
 	height: 100px;
 	margin-top: 70px;
-  }
-  
-  .searchContainer:hover {
+}
+
+.searchContainer:hover {
 	transform: scale(1.009);
-  }
-  
-  .selectGroup {
+}
+
+.selectGroup {
 	position: relative;
 	flex: 1;
 	min-width: 200px;
 	max-width: 250px;
-  }
-  
-  .selectGroup i {
+}
+
+.selectGroup i {
 	position: absolute;
 	left: 15px;
 	top: 50%;
 	transform: translateY(-50%);
-	color: #0066cc;
+	color: #00aed0;
 	font-size: 18px;
 	pointer-events: none;
-  }
-  
-  select {
+}
+
+select {
 	width: 100%;
 	padding: 14px 40px;
 	border: 1px solid #e0e0e0;
@@ -57,16 +57,24 @@
 	background-position: right 15px center;
 	background-size: 15px;
 	transition: border-color 0.3s ease;
-  }
-  
-  select:hover,
-  select:focus {
-	border-color: #0066cc;
+}
+
+select:hover,
+select:focus {
+	border-color: #00aed0;
 	outline: none;
+}
+.dropdown {
+	width: 100%;
+	padding: 8px;
+	font-size: 14px;
+	height: 40px; /* Set a fixed height for the dropdown */
+	overflow-y: auto; /* Ensure scrollable if options are too many */
+	max-height: 250px; /* Limiting dropdown height if it has too many options */
   }
-  
-  .searchButton {
-	background-color: #0066cc;
+
+.searchButton {
+	background-color: #38d8d5;
 	color: white;
 	padding: 14px 30px;
 	border: none;
@@ -80,37 +88,36 @@
 	white-space: nowrap;
 	height: 48px;
 	transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .searchButton:hover {
-	background-color: #005bb5;
+}
+
+.searchButton:hover {
+	background-color: #00aed0;
 	transform: translateY(-3px);
-  }
-  
-  .searchButton i {
+}
+
+.searchButton i {
 	font-size: 18px;
-  }
-  
-  @media (min-width: 1200px) {
+}
+
+@media (min-width: 1200px) {
 	.searchContainer {
-	  justify-content: space-between;
+		justify-content: space-between;
 	}
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
 	.searchContainer {
-	  flex-wrap: wrap;
-	  gap: 10px;
+		flex-wrap: wrap;
+		gap: 10px;
 	}
-  
+
 	.selectGroup {
-	  flex-basis: 100%;
-	  min-width: 100%;
+		flex-basis: 100%;
+		min-width: 100%;
 	}
-  
+
 	.searchButton {
-	  flex: 1;
-	  margin-top: 10px;
+		flex: 1;
+		margin-top: 10px;
 	}
-  }
-  
+}
