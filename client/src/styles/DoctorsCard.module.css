@@ -1,103 +1,108 @@
+/* DoctorCard.module.css */
+
 .doctor-card {
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	padding: 16px;
-	text-align: center;
-	width: 300px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	margin: 16px;
-	background-color: #ffffffb3;
-	transition: transform 0.4s ease, box-shadow 0.4s ease,
-		background-color 0.4s ease, color 0.4s ease;
-	cursor: pointer;
-	position: relative;
-	overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    width: 280px;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
+    margin: 16px;
+    background-color: #ffffff;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
 .doctor-card:hover {
-	transform: scale(1.05); /* Slightly enlarge the card */
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Deeper shadow */
-	background-color: #e0f7fa; /* Change background color on hover */
-	border-color: #00796b; /* Change border color */
-	color: #00796b; /* Change text color to match the border on hover */
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.25);
+    background-color: #e0f7fa;
+    border-color: #009688;
+    color: #009688;
 }
 
 .doctor-card img {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	margin-bottom: 10px;
-	transition: transform 0.4s ease;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    transition: transform 0.4s ease;
 }
 
 .doctor-card:hover img {
-	transform: translateX(-90px); /* Move the image to the left */
+    transform: translateX(-85px);
 }
 
 .doctor-card .line {
-	margin: 8px 0; /* Space between each line of text */
+    margin: 8px 0;
 }
 
 .doctor-card:hover .bold,
 .doctor-card:hover .non-bold {
-	color: #00796b;
+    color: #009688;
 }
 
 .book-appointment-btn {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(55%, -330%); /* Center the button initially */
-	background-color: #00796b;
-	color: white;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	font-size: 16px;
-	cursor: pointer;
-	opacity: 0; /* Initially hidden */
-	visibility: hidden; /* Initially hidden */
-	transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(55%, -330%);
+    background-color: #009688;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
 }
 
 .book-appointment-btn:hover {
-	background-color: #004d40; /* Darker shade of the original color */
-	color: #ffffff; /* Keep the text color white */
-	transform: translate(-50%, -50%) translateX(-120px) scale(1.05); /* Slight scale effect on hover */
+    background-color: #004d40;
+    color: white;
+    transform: translate(-50%, -50%) translateX(-120px) scale(1.05);
 }
 
 .doctor-card:hover .book-appointment-btn {
-	opacity: 1; /* Make the button visible */
-	visibility: visible; /* Ensure it's visible */
-	transform: translate(55%, -330%) translateX(-100px); /* Move it left to the position of the image */
+    opacity: 1;
+    visibility: visible;
+    transform: translate(55%, -330%) translateX(-95px);
 }
 
 @media (max-width: 600px) {
-	.doctor-card {
-		width: 90%; /* Ensure card is responsive */
-	}
+    .doctor-card {
+        width: 90%;
+    }
 
-	.doctor-card img {
-		width: 80px;
-		height: 80px;
-	}
+    .doctor-card img {
+        width: 80px;
+        height: 80px;
+    }
 }
+
 .line {
-	display: flex;
+    display: flex;
 }
+
 .bold {
-	font-weight: bold;
-	align-content: start;
-	clear: both;
-	width: 40%;
+    font-weight: bold;
+    width: 40%;
+    color: #009688;
+    text-align: left;
+    margin: 0.5rem;
 }
+
 .non-bold {
-	align-content: start;
-	clear: both;
-	width: 60%;
+    width: 60%;
+    text-align: left;
+    margin: 0.5rem;
 }
+
 .bold,
 .non-bold {
-	text-align: left;
-	margin: 0.5rem;
+    color: #546e7a;
 }

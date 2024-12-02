@@ -1,0 +1,191 @@
+/* HospitalDepartment.module.css */
+
+.header {
+    background: linear-gradient(135deg, #009688, #00bcd4);
+    color: white;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, transparent 20%, rgba(255, 255, 255, 0.1) 20%, rgba(255, 255, 255, 0.1) 40%, transparent 40%, transparent 60%, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.1) 80%, transparent 80%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.departmentsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.departmentCard {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.15);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid rgba(0, 188, 212, 0.1);
+}
+
+.departmentCard:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.25);
+    border-color: #00bcd4;
+}
+
+.departmentCard img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-bottom: 3px solid #009688;
+}
+
+.departmentCard:hover img {
+    transform: scale(1.1);
+}
+
+.cardContent {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: linear-gradient(to bottom, #ffffff 0%, #f9ffff 100%);
+}
+
+.departmentCard h2 {
+    color: #009688;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(0, 188, 212, 0.2);
+    position: relative;
+}
+
+.departmentCard h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: #00bcd4;
+    transition: width 0.3s ease;
+}
+
+.departmentCard:hover h2::after {
+    width: 100px;
+}
+
+.departmentCard p {
+    color: #546e7a;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    flex-grow: 1;
+    line-height: 1.7;
+}
+
+.learnMoreBtn {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(45deg, #009688, #00bcd4);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0, 188, 212, 0.2);
+}
+
+.learnMoreBtn:hover {
+    background: linear-gradient(45deg, #00bcd4, #009688);
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .departmentsGrid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .departmentCard h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.75rem;
+    }
+
+    .cardContent {
+        padding: 1rem;
+    }
+
+    .learnMoreBtn {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Add subtle animation for cards appearance */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.departmentCard {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Stagger the animation for each card */
+.departmentCard:nth-child(n) {
+    animation-delay: calc(0.1s * var(--order));
+}

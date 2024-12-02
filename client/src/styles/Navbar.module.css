@@ -1,129 +1,150 @@
+/* Navbar styling */
 .navbar {
-	background-color: #ffffff;
-	padding: 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	position: fixed;
-	width: 100%;
-	max-height: 80px;
-	top: 0;
-	left: 0;
-	z-index: 1000;
-}
-.navbar .logo img {
-	max-width: 50px;
-}
-.navbar ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	gap: 30px;
-}
-.navbar ul li {
-	display: inline;
-}
-.navbar ul li a {
-	text-decoration: none;
-	color: #333;
-	font-size: 18px;
-}
-.navbar ul li a:hover {
-	color: #38d8d5;
-}
-.navbar .book-now {
-	background-color: #38d8d5;
-	color: white;
-	padding: 10px 20px;
-	text-decoration: none;
-	border-radius: 5px;
-}
-.navbar .book-now:hover {
-	background-color: #00bdb9;
-}
-.navbar .book-now .desktop-book-now {
-	background-color: #007bff;
-	color: white;
-	padding: 10px 20px;
-	text-decoration: none;
-	border-radius: 5px;
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    max-height: 80px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-.navbar .book-now .desktop-book-now:hover {
-	background-color: #0056b3;
+.navbar .logo img {
+    max-width: 50px;
 }
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #00bcd4; /* Updated hover color */
+}
+
+.navbar .book-now {
+    background: linear-gradient(45deg, #009688, #00bcd4); /* Gradient background */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .book-now:hover {
+    background: linear-gradient(45deg, #00bcd4, #009688); /* Inverse gradient on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+.navbar .desktop-book-now {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.navbar .desktop-book-now:hover {
+    background-color: #0056b3;
+}
+
 .navbar .mobile-book-now {
-	display: none;
+    display: none;
 }
 
 .menu-toggle {
-	display: none; /* Hide on larger screens */
+    display: none; /* Hide on larger screens */
 }
 
+/* Mobile and Tablet Responsive */
 @media (max-width: 768px) {
-	.navbar {
-		padding: 10px;
-	}
+    .navbar {
+        padding: 10px;
+    }
 
-	/* Initially hide the menu offscreen to the right */
-	.navbar ul {
-		position: fixed;
-		top: 0;
-		right: -250px; /* Hide the menu offscreen to the right */
-		height: 100%;
-		background-color: #ffffff;
-		width: 250px;
-		transition: transform 0.3s ease-in-out;
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-		padding-top: 80px; /* To avoid covering the logo */
-		box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-	}
+    /* Initially hide the menu offscreen to the right */
+    .navbar ul {
+        position: fixed;
+        top: 0;
+        right: -250px; /* Hide the menu offscreen to the right */
+        height: 100%;
+        background-color: #ffffff;
+        width: 250px;
+        transition: transform 0.3s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 80px; /* To avoid covering the logo */
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    }
 
-	/* Show the menu when open */
-	.navbar ul.open {
-		transform: translateX(-250px); /* Slide the menu in from the right */
-	}
+    /* Show the menu when open */
+    .navbar ul.open {
+        transform: translateX(-250px); /* Slide the menu in from the right */
+    }
 
-	.navbar .menu-toggle {
-		display: block;
-		cursor: pointer;
-		font-size: 30px;
-		color: #333;
-		z-index: 1001;
-	}
+    .navbar .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 30px;
+        color: #009688; /* Match theme color */
+        z-index: 1001;
+    }
 
-	.navbar .book-now {
-		width: 100%;
-		margin-top: 10px;
-		text-align: center;
-	}
+    .navbar .book-now {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+        background: linear-gradient(45deg, #009688, #00bcd4); /* Gradient background for mobile */
+    }
 
-	.navbar .logo img {
-		max-width: 40px; /* Adjust logo size for mobile */
-	}
-	.navbar .mobile-book-now {
-		display: block;
-	}
-	.navbar .desktop-book-now{
-		display: none;
-	}
+    .navbar .logo img {
+        max-width: 40px; /* Adjust logo size for mobile */
+    }
+
+    .navbar .mobile-book-now {
+        display: block;
+    }
+
+    .navbar .desktop-book-now {
+        display: none;
+    }
 }
 
 /* Larger tablet or small desktop */
 @media (max-width: 1024px) {
-	.navbar {
-		padding: 15px;
-	}
+    .navbar {
+        padding: 15px;
+    }
 
-	.navbar ul {
-		gap: 20px;
-	}
+    .navbar ul {
+        gap: 20px;
+    }
 
-	.navbar .book-now {
-		width: auto;
-	}
+    .navbar .book-now {
+        width: auto;
+        padding: 8px 16px; /* Adjust padding */
+    }
 }

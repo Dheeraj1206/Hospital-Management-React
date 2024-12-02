@@ -2,10 +2,10 @@
 import React from 'react';
 import styles from '../styles/HospitalList.module.css';
 
-const HospitalCard = ({ imageUrl, name, doctors, address, emergency }) => (
+const HospitalCard = ({name, doctors, address, emergency }) => (
 	<div className={styles.hospitalCard}>
 		<img
-			src={imageUrl || '/images/default_hospital.jpg'} // Fallback to a default image if no image_url is provided
+			src={`/images/Hospitals/${name}.jpeg` || '/images/default_hospital.jpeg'} // Fallback to a default image if no image_url is provided
 			alt={`${name} Logo`}
 			className={styles.hospitalLogo}
 		/>

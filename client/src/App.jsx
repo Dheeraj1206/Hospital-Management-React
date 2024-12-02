@@ -14,6 +14,7 @@ import ScrollToTop from './components/ScrollToTop';
 import FilterBar from './components/FilterBar'
 import HospitalList from './components/HospitalList';
 import HospitalDataFilterer from './components/HospitalDataFilterer';
+import HospitalDepartments from './components/HospitalDepartment';
 
 function App() {
 	return (
@@ -31,6 +32,7 @@ function App() {
 						</>
 					}
 				/>
+				<Route path="/departments" element={<HospitalDepartments />} />
 				<Route path="/doctors" element={<DoctorList />} />
 				<Route
 					path="/hospitals"

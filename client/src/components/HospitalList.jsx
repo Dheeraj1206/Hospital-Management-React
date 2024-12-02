@@ -81,10 +81,6 @@ const HospitalList = ({ city, hospitalName, doctorTypes }) => {
 					? filteredData.map((hospital, index) => (
 							<HospitalCard
 								key={index}
-								imageUrl={
-									`/images/Hospitals/${hospital.hospital_name}.jpeg` ||
-									'/images/default_hospital.jpeg'
-								}
 								name={hospital.hospital_name}
 								doctors={hospital.doctor_types.join(', ')}
 								address={hospital.address}
