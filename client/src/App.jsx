@@ -11,10 +11,9 @@ import MessageSection from './components/MessageSection';
 import Footer from './components/Footer';
 import DoctorList from './components/DoctorList';
 import ScrollToTop from './components/ScrollToTop';
-import FilterBar from './components/FilterBar'
-import HospitalList from './components/HospitalList';
 import HospitalDataFilterer from './components/HospitalDataFilterer';
 import HospitalDepartments from './components/HospitalDepartment';
+import ProfilePage from './components/ProfilePage';
 
 function App() {
 	return (
@@ -38,7 +37,15 @@ function App() {
 					path="/hospitals"
 					element={
 						<>
-							<HospitalDataFilterer/>
+							<HospitalDataFilterer />
+						</>
+					}
+				/>
+				<Route
+					path="/doctors/:doctorName"
+					element={
+						<>
+							<ProfilePage />
 						</>
 					}
 				/>

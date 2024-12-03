@@ -13,6 +13,8 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    text-decoration: none;
+    height: 435px;
 }
 
 .doctor-card:hover {

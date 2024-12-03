@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/SearchContainer.module.css';
 
 const SearchContainer = () => {
@@ -13,6 +14,8 @@ const SearchContainer = () => {
 	const [specialtyFound, setSpecialtyFound] = useState(false);
 	const [doctorFound, setDoctorFound] = useState(false);
 
+	const navigate = useNavigate(); // Create navigate instance
+
 	useEffect(() => {
 		setError('');
 		const handler = setTimeout(() => {
@@ -26,7 +29,6 @@ const SearchContainer = () => {
 
 	useEffect(() => {
 		if (!debouncedSearch) {
-			console.log('Debounce triggered');
 			setDoctorSuggestions([]);
 			setSpecialtySuggestions([]);
 			setError('');
@@ -34,7 +36,6 @@ const SearchContainer = () => {
 		}
 		if (!isSuggestionClicked) {
 			const fetchSuggestions = async () => {
-                console.log('FetchSuggestion triggered');
                 try {
                   const response = await fetch(
                     `http://localhost:3500/doctorsApi/doctors?searchSpeciality=${specialtyQuery}&searchDoctor=${doctorQuery}&region=${region}`
@@ -100,6 +101,7 @@ const SearchContainer = () => {
 		setDoctorSuggestions([]);
 		setIsSuggestionClicked(true);
 		setDoctorFound(true);
+		navigate(`/doctors/${encodeURIComponent(doctorName)}`);
 	};
 
 	return (

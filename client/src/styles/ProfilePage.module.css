@@ -1,0 +1,160 @@
+/* ProfilePage.module.css */
+
+/* Container */
+.container {
+	width: 80%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+/* Header */
+.header {
+	background: linear-gradient(135deg, #009688, #00bcd4);
+	color: white;
+	padding: 2.5rem 1rem;
+	text-align: center;
+	box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+	margin-top: 60px;
+	position: relative;
+	overflow: hidden;
+}
+
+.header h1 {
+	font-size: 3rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.header p {
+	font-size: 1.2rem;
+	font-weight: 400;
+}
+
+/* Profile Section */
+.profile {
+	background-color: white;
+	padding: 40px 20px;
+	margin-top: 20px;
+	box-shadow: 0 4px 15px rgba(0, 188, 212, 0.1);
+	border-radius: 15px;
+}
+
+.profile h2 {
+	color: #009688;
+	font-size: 1.8rem;
+	margin-bottom: 10px;
+	text-align: center;
+	position: relative;
+	transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.profile h2::after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 50px;
+	height: 2px;
+	background-color: #00bcd4;
+	transition: width 0.3s ease;
+}
+
+.profile h2:hover {
+	color: #00bcd4;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.profile h2:hover::after {
+	width: 100px;
+}
+
+.profile ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.profile li {
+	margin-bottom: 10px;
+	font-size: 1rem;
+	color: #546e7a;
+}
+
+.profile li a {
+	color: #009688;
+	text-decoration: none;
+	transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.profile li a:hover {
+	color: #00bcd4;
+	text-decoration: none;
+	border-bottom: 2px solid #00bcd4;
+}
+
+/* Testimonials */
+blockquote {
+	font-style: italic;
+	border-left: 4px solid #009688;
+	padding-left: 10px;
+	margin-bottom: 10px;
+	font-size: 1.1rem;
+	color: #546e7a;
+	line-height: 1.6;
+}
+
+blockquote:hover {
+	color: #009688;
+}
+
+/* Footer */
+.footer {
+	background-color: #333;
+	color: white;
+	padding: 2rem 1rem;
+	text-align: center;
+	margin-top: 40px;
+	border-top: 4px solid #009688;
+}
+
+.footer p {
+	font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.header h1 {
+		font-size: 2.5rem;
+	}
+
+	.profile h2 {
+		font-size: 1.6rem;
+	}
+
+	.profile li {
+		font-size: 0.95rem;
+	}
+
+	blockquote {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.header h1 {
+		font-size: 2rem;
+	}
+
+	.profile h2 {
+		font-size: 1.4rem;
+	}
+
+	.profile li {
+		font-size: 0.9rem;
+	}
+
+	.footer p {
+		font-size: 0.85rem;
+	}
+}
