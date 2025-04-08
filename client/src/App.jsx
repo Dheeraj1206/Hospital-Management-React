@@ -14,6 +14,7 @@ import ScrollToTop from './components/ScrollToTop';
 import HospitalDataFilterer from './components/HospitalDataFilterer';
 import HospitalDepartments from './components/HospitalDepartment';
 import ProfilePage from './components/ProfilePage';
+import HospitalProfilePage from './components/HospitalProfilePage';
 
 function App() {
 	return (
@@ -46,6 +47,14 @@ function App() {
 					element={
 						<>
 							<ProfilePage />
+						</>
+					}
+				/>
+				<Route
+					path="/hospitals/:hospitalName"
+					element={
+						<>
+							<HospitalProfilePage />
 						</>
 					}
 				/>

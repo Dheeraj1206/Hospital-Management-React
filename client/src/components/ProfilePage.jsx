@@ -50,9 +50,18 @@ const ProfilePage = () => {
 		<div>
 			{/* Header Section */}
 			<header className={styles.header}>
-				<div className={styles.container}>
+				<div className={styles['header-image']}>
+					<img
+						src={
+							`/images/${doctorData.gender} Doctors/${doctorData.name}.jpg` ||
+							'/images/default-doctor.png'
+						}
+						alt={`Dr. ${doctorData.name}`}
+					/>
+				</div>
+				<div className={styles['header-content']}>
 					<h1>Dr. {doctorData.name}</h1>
-					<h1>{doctorData.degree}</h1>
+					<p>{doctorData.degree}</p>
 					<p>Board Certified {doctorData.specialty}</p>
 				</div>
 			</header>
@@ -60,6 +69,7 @@ const ProfilePage = () => {
 			{/* Profile Section */}
 			<section className={styles.profile}>
 				<div className={styles.container}>
+					{/* Profile Info */}
 					<div className={styles['profile-info']}>
 						<h2>Personal Information</h2>
 						<ul>
@@ -78,19 +88,26 @@ const ProfilePage = () => {
 							<li>
 								<strong>Email:</strong>{' '}
 								<a
-									href="https://mail.google.com/mail/?view=cm&fs=1&to=dr.{doctorData.name.toLowerCase().replace(/\s+/g, '')}@medline.com"
+									href={`mailto:dr.${doctorData.name
+										.toLowerCase()
+										.replace(/\s+/g, '')}@medline.com`}
 									target="_blank"
+									rel="noopener noreferrer"
 								>
 									dr.{doctorData.name.toLowerCase().replace(/\s+/g, '')}
 									@medline.com
 								</a>
 							</li>
 							<li>
-								<strong>Website:</strong> <a href="/">www.medline.com</a>
+								<strong>Website:</strong>{' '}
+								<a href="/" target="_blank" rel="noopener noreferrer">
+									www.medline.com
+								</a>
 							</li>
 						</ul>
 					</div>
 
+					{/* Education */}
 					<div className={styles['profile-education']}>
 						<h2>Education</h2>
 						<ul>
@@ -105,6 +122,7 @@ const ProfilePage = () => {
 						</ul>
 					</div>
 
+					{/* Certifications */}
 					<div className={styles['profile-certifications']}>
 						<h2>Certifications & Licensure</h2>
 						<ul>
@@ -121,6 +139,7 @@ const ProfilePage = () => {
 						</ul>
 					</div>
 
+					{/* Experience */}
 					<div className={styles['profile-experience']}>
 						<h2>Professional Experience</h2>
 						<p>
@@ -137,6 +156,7 @@ const ProfilePage = () => {
 						</p>
 					</div>
 
+					{/* Services */}
 					<div className={styles['profile-services']}>
 						<h2>Services Offered</h2>
 						<ul>
@@ -146,24 +166,31 @@ const ProfilePage = () => {
 						</ul>
 					</div>
 
+					{/* Testimonials */}
 					<div className={styles['profile-testimonials']}>
 						<h2>Patient Testimonials</h2>
 						<blockquote>
 							<p>
-								"Dr. Smith took the time to explain my condition thoroughly and
-								made sure I was comfortable with the treatment plan. He
-								genuinely cares about his patients and goes above and beyond in
-								providing excellent care." – Emily R.
+								"Dr. {doctorData.name} took the time to explain my condition
+								thoroughly and made sure I was comfortable with the treatment
+								plan. He genuinely cares about his patients and goes above and
+								beyond in providing excellent care." – Emily R.
 							</p>
 						</blockquote>
 						<blockquote>
 							<p>
-								"After struggling with heart issues for years, Dr. Smith helped
-								me understand my diagnosis and provided a clear, practical path
-								to recovery. I feel like I'm in the best hands possible!" –
-								Michael W.
+								"After struggling with heart issues for years, Dr.{' '}
+								{doctorData.name} helped me understand my diagnosis and provided
+								a clear, practical path to recovery. I feel like I'm in the best
+								hands possible!" – Michael W.
 							</p>
 						</blockquote>
+					</div>
+
+					{/* Booking Section */}
+					<div className={styles['booking-section']}>
+						<h2>Schedule an Appointment</h2>
+						<button className={styles['book-button']}>Book Appointment</button>
 					</div>
 				</div>
 			</section>

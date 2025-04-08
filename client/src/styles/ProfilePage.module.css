@@ -9,20 +9,67 @@
 
 /* Header */
 .header {
-	background-color: #f8f9fa;
-	padding: 2rem;
+	background: linear-gradient(135deg, #009688 0%, #00695c 100%);
+	padding: 3rem 2rem;
+	color: white;
+	position: relative;
+	overflow: hidden;
+	margin-top: 80px;
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+}
+
+.header::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: url('/images/pattern.png') repeat;
+	opacity: 0.1;
+}
+
+.header-content {
+	position: relative;
+	z-index: 1;
+	flex: 1;
 	text-align: center;
+	margin-left: -100px;
 }
 
 .header h1 {
-	font-size: 2.5rem;
-	color: #333;
+	font-size: 2.8rem;
+	color: white;
 	margin-bottom: 0.5rem;
+	font-weight: 600;
+	position: relative;
 }
 
 .header p {
-	font-size: 1.2rem;
-	color: #666;
+	font-size: 1.4rem;
+	color: rgba(255, 255, 255, 0.9);
+	margin-bottom: 1rem;
+}
+
+/* Profile Image in Header */
+.header-image {
+	width: 200px;
+	height: 200px;
+	border-radius: 20px;
+	border: 5px solid white;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	position: relative;
+	z-index: 2;
+	flex-shrink: 0;
+}
+
+.header-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 /* Profile Section */
@@ -30,6 +77,27 @@
 	padding: 2rem;
 	max-width: 1200px;
 	margin: 0 auto;
+	position: relative;
+	z-index: 1;
+}
+
+.profile-image {
+	width: 200px;
+	height: 200px;
+	border-radius: 20px;
+	margin: -100px 0 2rem 2rem;
+	border: 5px solid white;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	position: relative;
+	z-index: 2;
+	float: left;
+}
+
+.profile-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .profile-info,
@@ -39,10 +107,21 @@
 .profile-services,
 .profile-testimonials {
 	background: white;
-	border-radius: 8px;
-	padding: 1.5rem;
+	border-radius: 12px;
+	padding: 2rem;
 	margin-bottom: 2rem;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-info:hover,
+.profile-education:hover,
+.profile-certifications:hover,
+.profile-experience:hover,
+.profile-services:hover,
+.profile-testimonials:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .profile-info h2,
@@ -51,11 +130,11 @@
 .profile-experience h2,
 .profile-services h2,
 .profile-testimonials h2 {
-	font-size: 1.5rem;
-	color: #333;
-	margin-bottom: 1rem;
-	padding-bottom: 0.5rem;
-	border-bottom: 2px solid #f0f0f0;
+	font-size: 1.6rem;
+	color: #009688;
+	margin-bottom: 1.5rem;
+	padding-bottom: 0.8rem;
+	border-bottom: 2px solid #e0f2f1;
 }
 
 .profile-info ul,
@@ -70,29 +149,49 @@
 .profile-education li,
 .profile-certifications li,
 .profile-services li {
-	margin-bottom: 0.8rem;
-	color: #666;
+	margin-bottom: 1rem;
+	color: #546e7a;
+	display: flex;
+	align-items: center;
+}
+
+.profile-info li::before,
+.profile-education li::before,
+.profile-certifications li::before,
+.profile-services li::before {
+	content: '•';
+	color: #009688;
+	margin-right: 0.5rem;
+	font-size: 1.2rem;
 }
 
 .profile-info strong,
 .profile-education strong,
 .profile-certifications strong,
 .profile-experience strong {
-	color: #333;
+	color: #37474f;
 	margin-right: 0.5rem;
+	font-weight: 600;
 }
 
 .profile-testimonials blockquote {
 	background: #f8f9fa;
-	padding: 1rem;
-	border-left: 4px solid #007bff;
-	margin-bottom: 1rem;
+	padding: 1.5rem;
+	border-left: 4px solid #009688;
+	margin-bottom: 1.5rem;
+	border-radius: 0 8px 8px 0;
+	transition: transform 0.3s ease;
+}
+
+.profile-testimonials blockquote:hover {
+	transform: translateX(5px);
 }
 
 .profile-testimonials blockquote p {
 	margin: 0;
-	color: #666;
+	color: #546e7a;
 	font-style: italic;
+	line-height: 1.6;
 }
 
 .error-message {
@@ -100,14 +199,61 @@
 	text-align: center;
 	padding: 1rem;
 	background-color: #f8d7da;
-	border-radius: 4px;
+	border-radius: 8px;
 	margin: 1rem 0;
+}
+
+/* Booking Section */
+.booking-section {
+	background: #e0f2f1;
+	padding: 2rem;
+	border-radius: 12px;
+	text-align: center;
+	margin-top: 2rem;
+}
+
+.booking-section h2 {
+	color: #00695c;
+	margin-bottom: 1.5rem;
+}
+
+.book-button {
+	background: #009688;
+	color: white;
+	padding: 1rem 2rem;
+	border: none;
+	border-radius: 8px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 15px rgba(0, 150, 136, 0.3);
+}
+
+.book-button:hover {
+	background: #00695c;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 105, 92, 0.4);
 }
 
 /* Responsive Design */
 @media (max-width: 1200px) {
 	.container {
 		padding: 0 1.5rem;
+	}
+
+	.header {
+		padding: 2rem 1.5rem;
+		gap: 1.5rem;
+	}
+
+	.header-content {
+		margin-left: -90px;
+	}
+
+	.header-image {
+		width: 180px;
+		height: 180px;
 	}
 
 	.profile {
@@ -117,19 +263,39 @@
 
 @media (max-width: 768px) {
 	.header {
-		padding: 1.5rem;
+		padding: 2rem 1rem;
+		margin-top: 70px;
+		flex-direction: column;
+		text-align: center;
+		gap: 1.5rem;
+	}
+
+	.header-content {
+		margin-left: 0;
+		text-align: center;
 	}
 
 	.header h1 {
-		font-size: 2rem;
+		font-size: 2.2rem;
 	}
 
 	.header p {
-		font-size: 1.1rem;
+		font-size: 1.2rem;
+	}
+
+	.header-image {
+		width: 150px;
+		height: 150px;
 	}
 
 	.profile {
 		padding: 1rem;
+	}
+
+	.profile-image {
+		width: 150px;
+		height: 150px;
+		margin: -75px 0 1rem 1rem;
 	}
 
 	.profile-info,
@@ -138,14 +304,19 @@
 	.profile-experience,
 	.profile-services,
 	.profile-testimonials {
-		padding: 1rem;
-		margin-bottom: 1.5rem;
+		padding: 1.5rem;
 	}
 }
 
 @media (max-width: 480px) {
 	.header {
-		padding: 1rem;
+		padding: 1.5rem 1rem;
+		margin-top: 60px;
+		gap: 1rem;
+	}
+
+	.header-content {
+		margin-left: 0;
 	}
 
 	.header h1 {
@@ -156,6 +327,11 @@
 		font-size: 1rem;
 	}
 
+	.header-image {
+		width: 120px;
+		height: 120px;
+	}
+
 	.container {
 		padding: 0 1rem;
 	}
@@ -164,13 +340,19 @@
 		padding: 0.5rem;
 	}
 
+	.profile-image {
+		width: 120px;
+		height: 120px;
+		margin: -60px 0 1rem 1rem;
+	}
+
 	.profile-info h2,
 	.profile-education h2,
 	.profile-certifications h2,
 	.profile-experience h2,
 	.profile-services h2,
 	.profile-testimonials h2 {
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 	}
 
 	.profile-info li,
