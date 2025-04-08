@@ -2,159 +2,181 @@
 
 /* Container */
 .container {
-	width: 80%;
+	max-width: 1200px;
 	margin: 0 auto;
-	padding: 20px;
+	padding: 0 1rem;
 }
 
 /* Header */
 .header {
-	background: linear-gradient(135deg, #009688, #00bcd4);
-	color: white;
-	padding: 2.5rem 1rem;
+	background-color: #f8f9fa;
+	padding: 2rem;
 	text-align: center;
-	box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
-	margin-top: 60px;
-	position: relative;
-	overflow: hidden;
 }
 
 .header h1 {
-	font-size: 3rem;
-	font-weight: 600;
+	font-size: 2.5rem;
+	color: #333;
 	margin-bottom: 0.5rem;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .header p {
 	font-size: 1.2rem;
-	font-weight: 400;
+	color: #666;
 }
 
 /* Profile Section */
 .profile {
-	background-color: white;
-	padding: 40px 20px;
-	margin-top: 20px;
-	box-shadow: 0 4px 15px rgba(0, 188, 212, 0.1);
-	border-radius: 15px;
+	padding: 2rem;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
-.profile h2 {
-	color: #009688;
-	font-size: 1.8rem;
-	margin-bottom: 10px;
-	text-align: center;
-	position: relative;
-	transition: color 0.3s ease, text-shadow 0.3s ease;
+.profile-info,
+.profile-education,
+.profile-certifications,
+.profile-experience,
+.profile-services,
+.profile-testimonials {
+	background: white;
+	border-radius: 8px;
+	padding: 1.5rem;
+	margin-bottom: 2rem;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.profile h2::after {
-	content: '';
-	position: absolute;
-	bottom: -2px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 50px;
-	height: 2px;
-	background-color: #00bcd4;
-	transition: width 0.3s ease;
+.profile-info h2,
+.profile-education h2,
+.profile-certifications h2,
+.profile-experience h2,
+.profile-services h2,
+.profile-testimonials h2 {
+	font-size: 1.5rem;
+	color: #333;
+	margin-bottom: 1rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 2px solid #f0f0f0;
 }
 
-.profile h2:hover {
-	color: #00bcd4;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.profile h2:hover::after {
-	width: 100px;
-}
-
-.profile ul {
+.profile-info ul,
+.profile-education ul,
+.profile-certifications ul,
+.profile-services ul {
 	list-style: none;
-	padding-left: 0;
+	padding: 0;
 }
 
-.profile li {
-	margin-bottom: 10px;
-	font-size: 1rem;
-	color: #546e7a;
+.profile-info li,
+.profile-education li,
+.profile-certifications li,
+.profile-services li {
+	margin-bottom: 0.8rem;
+	color: #666;
 }
 
-.profile li a {
-	color: #009688;
-	text-decoration: none;
-	transition: color 0.3s ease, border-bottom 0.3s ease;
+.profile-info strong,
+.profile-education strong,
+.profile-certifications strong,
+.profile-experience strong {
+	color: #333;
+	margin-right: 0.5rem;
 }
 
-.profile li a:hover {
-	color: #00bcd4;
-	text-decoration: none;
-	border-bottom: 2px solid #00bcd4;
+.profile-testimonials blockquote {
+	background: #f8f9fa;
+	padding: 1rem;
+	border-left: 4px solid #007bff;
+	margin-bottom: 1rem;
 }
 
-/* Testimonials */
-blockquote {
+.profile-testimonials blockquote p {
+	margin: 0;
+	color: #666;
 	font-style: italic;
-	border-left: 4px solid #009688;
-	padding-left: 10px;
-	margin-bottom: 10px;
-	font-size: 1.1rem;
-	color: #546e7a;
-	line-height: 1.6;
 }
 
-blockquote:hover {
-	color: #009688;
-}
-
-/* Footer */
-.footer {
-	background-color: #333;
-	color: white;
-	padding: 2rem 1rem;
+.error-message {
+	color: #dc3545;
 	text-align: center;
-	margin-top: 40px;
-	border-top: 4px solid #009688;
-}
-
-.footer p {
-	font-size: 1rem;
+	padding: 1rem;
+	background-color: #f8d7da;
+	border-radius: 4px;
+	margin: 1rem 0;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-	.header h1 {
-		font-size: 2.5rem;
+@media (max-width: 1200px) {
+	.container {
+		padding: 0 1.5rem;
 	}
 
-	.profile h2 {
-		font-size: 1.6rem;
-	}
-
-	.profile li {
-		font-size: 0.95rem;
-	}
-
-	blockquote {
-		font-size: 1rem;
+	.profile {
+		padding: 1.5rem;
 	}
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+	.header {
+		padding: 1.5rem;
+	}
+
 	.header h1 {
 		font-size: 2rem;
 	}
 
-	.profile h2 {
-		font-size: 1.4rem;
+	.header p {
+		font-size: 1.1rem;
 	}
 
-	.profile li {
+	.profile {
+		padding: 1rem;
+	}
+
+	.profile-info,
+	.profile-education,
+	.profile-certifications,
+	.profile-experience,
+	.profile-services,
+	.profile-testimonials {
+		padding: 1rem;
+		margin-bottom: 1.5rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.header {
+		padding: 1rem;
+	}
+
+	.header h1 {
+		font-size: 1.8rem;
+	}
+
+	.header p {
+		font-size: 1rem;
+	}
+
+	.container {
+		padding: 0 1rem;
+	}
+
+	.profile {
+		padding: 0.5rem;
+	}
+
+	.profile-info h2,
+	.profile-education h2,
+	.profile-certifications h2,
+	.profile-experience h2,
+	.profile-services h2,
+	.profile-testimonials h2 {
+		font-size: 1.3rem;
+	}
+
+	.profile-info li,
+	.profile-education li,
+	.profile-certifications li,
+	.profile-services li {
 		font-size: 0.9rem;
-	}
-
-	.footer p {
-		font-size: 0.85rem;
 	}
 }

@@ -36,35 +36,39 @@ const SearchContainer = () => {
 		}
 		if (!isSuggestionClicked) {
 			const fetchSuggestions = async () => {
-                try {
-                  const response = await fetch(
-                    `http://localhost:3500/doctorsApi/doctors?searchSpeciality=${specialtyQuery}&searchDoctor=${doctorQuery}&region=${region}`
-                  );
-                  if (!response.ok) {
-                    console.error('Failed to fetch suggestions, Status:', response.status);
-                    setError('Failed to fetch doctor suggestions. Please try again.');
-                    return;
-                  }
-                  const contentType = response.headers.get('content-type');
-                  let data = await response.json();
-              
-                  // Now data is an object with a 'doctors' key, so access that key
-                  if (data && Array.isArray(data.doctors)) {
-                    const doctors = data.doctors.filter((doctor) => doctor.name);
-                    const specialties = data.doctors.filter((doctor) => doctor.specialty);
-                    setDoctorSuggestions(doctors);
-                    setSpecialtySuggestions(specialties);
-                  } else {
-                    console.error('Expected an array inside "doctors", but got:', data);
-                    setError('Unexpected data format received from the server.');
-                  }
-                  setError('');
-                } catch (error) {
-                  console.error('Error fetching suggestions:', error);
-                  setError('An error occurred while fetching suggestions.');
-                }
-              };
-              
+				try {
+					const response = await fetch(
+						`http://localhost:3500/doctorsApi/doctors?searchSpeciality=${specialtyQuery}&searchDoctor=${doctorQuery}&region=${region}`
+					);
+					if (!response.ok) {
+						console.error(
+							'Failed to fetch suggestions, Status:',
+							response.status
+						);
+						setError('Failed to fetch doctor suggestions. Please try again.');
+						return;
+					}
+					const contentType = response.headers.get('content-type');
+					let data = await response.json();
+
+					// Now data is an object with a 'doctors' key, so access that key
+					if (data && Array.isArray(data.doctors)) {
+						const doctors = data.doctors.filter((doctor) => doctor.name);
+						const specialties = data.doctors.filter(
+							(doctor) => doctor.specialty
+						);
+						setDoctorSuggestions(doctors);
+						setSpecialtySuggestions(specialties);
+					} else {
+						console.error('Expected an array inside "doctors", but got:', data);
+						setError('Unexpected data format received from the server.');
+					}
+					setError('');
+				} catch (error) {
+					console.error('Error fetching suggestions:', error);
+					setError('An error occurred while fetching suggestions.');
+				}
+			};
 
 			fetchSuggestions();
 		}

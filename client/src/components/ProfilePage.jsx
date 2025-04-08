@@ -86,10 +86,7 @@ const ProfilePage = () => {
 								</a>
 							</li>
 							<li>
-								<strong>Website:</strong>{' '}
-								<a href="/">
-									www.medline.com
-								</a>
+								<strong>Website:</strong> <a href="/">www.medline.com</a>
 							</li>
 						</ul>
 					</div>

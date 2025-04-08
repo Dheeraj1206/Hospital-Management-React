@@ -1,57 +1,215 @@
-    /* DoctorList.module.css */
+/* DoctorList.module.css */
 
-    .doctor-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 20px;
-        gap: 20px;
-        margin-top: 60px;
-        background: #f0f4f8;
-    }
+.doctor-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 30px;
+	padding: 40px;
+	margin: 60px auto;
+	background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+	max-width: 1400px;
+	border-radius: 20px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	position: relative;
+	padding-bottom: 100px;
+}
 
-    .pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        font-size: 16px;
-    }
+.doctor-card-link {
+	text-decoration: none;
+	color: inherit;
+	transition: transform 0.3s ease;
+	margin-bottom: 20px;
+}
 
-    .pagination button {
-        padding: 10px 20px;
-        margin: 0 10px;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 10px;
-        background: linear-gradient(45deg, #009688, #00bcd4);
-        color: white;
-        border: none;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+.doctor-card-link:hover {
+	transform: translateY(-5px);
+}
 
-    .pagination button:hover {
-        background: linear-gradient(45deg, #00bcd4, #009688);
-        transform: translateY(-2px);
-    }
+.doctor-card {
+	background: white;
+	border-radius: 15px;
+	padding: 30px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
 
-    .pagination button:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-    }
+.doctor-card:hover {
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
 
-    .pagination span {
-        font-size: 16px;
-        color: #546e7a;
-    }
+.doctor-image {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	margin: 0 auto 25px;
+	object-fit: cover;
+	border: 3px solid #009688;
+	box-shadow: 0 4px 10px rgba(0, 150, 136, 0.2);
+}
 
-    @media (max-width: 768px) {
-        .pagination button {
-            padding: 8px 16px;
-            font-size: 14px;
-        }
-    }
-    .doctor-card-link{
-        text-decoration: none;
-        color: inherit; 
-    }
+.doctor-info {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.doctor-name {
+	font-size: 1.4rem;
+	color: #2c3e50;
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+
+.doctor-specialty {
+	color: #009688;
+	font-size: 1.1rem;
+	margin-bottom: 10px;
+	font-weight: 500;
+}
+
+.doctor-details {
+	color: #34495e;
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-bottom: 20px;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 30px;
+	gap: 20px;
+	width: 100%;
+	max-width: 600px;
+	padding: 20px;
+	background: white;
+	border-radius: 15px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pagination button {
+	padding: 12px 25px;
+	background: linear-gradient(45deg, #009688, #006966);
+	color: white;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	font-size: 1rem;
+	font-weight: 600;
+	box-shadow: 0 4px 15px rgba(0, 150, 136, 0.3);
+	margin: 0 10px;
+}
+
+.pagination button:hover {
+	background: linear-gradient(45deg, #006966, #009688);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 105, 102, 0.4);
+	border: 1px solid #80fffb;
+}
+
+.pagination button:disabled {
+	background: #bdc3c7;
+	cursor: not-allowed;
+	transform: none;
+	box-shadow: none;
+	border: none;
+}
+
+.pagination span {
+	font-size: 1.1rem;
+	color: #2c3e50;
+	font-weight: 500;
+	margin: 0 15px;
+	min-width: 100px;
+	text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+	.doctor-list {
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		gap: 25px;
+		padding: 30px;
+		margin: 50px auto;
+	}
+}
+
+@media (max-width: 768px) {
+	.doctor-list {
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		gap: 20px;
+		padding: 25px;
+		margin: 40px auto;
+		padding-bottom: 90px;
+	}
+
+	.doctor-card {
+		padding: 25px;
+		gap: 15px;
+	}
+
+	.doctor-image {
+		width: 100px;
+		height: 100px;
+		margin-bottom: 20px;
+	}
+
+	.doctor-name {
+		font-size: 1.2rem;
+		margin-bottom: 3px;
+	}
+
+	.doctor-specialty {
+		font-size: 1rem;
+		margin-bottom: 8px;
+	}
+
+	.pagination {
+		bottom: 25px;
+		gap: 15px;
+		padding: 15px;
+	}
+
+	.pagination button {
+		padding: 10px 20px;
+		margin: 0 8px;
+	}
+}
+
+@media (max-width: 480px) {
+	.doctor-list {
+		grid-template-columns: 1fr;
+		gap: 20px;
+		padding: 20px;
+		margin: 30px auto;
+		padding-bottom: 80px;
+	}
+
+	.doctor-card {
+		padding: 20px;
+		gap: 12px;
+	}
+
+	.pagination {
+		bottom: 20px;
+		flex-direction: column;
+		gap: 12px;
+		padding: 15px;
+	}
+
+	.pagination button {
+		width: 100%;
+		max-width: 200px;
+		margin: 5px 0;
+	}
+}
