@@ -15,6 +15,7 @@ import HospitalDataFilterer from './components/HospitalDataFilterer';
 import HospitalDepartments from './components/HospitalDepartment';
 import ProfilePage from './components/ProfilePage';
 import HospitalProfilePage from './components/HospitalProfilePage';
+import DepartmentProfilePage from './components/DepartmentProfilePage';
 
 function App() {
 	return (
@@ -55,6 +56,14 @@ function App() {
 					element={
 						<>
 							<HospitalProfilePage />
+						</>
+					}
+				/>
+				<Route
+					path="/departments/:departmentName"
+					element={
+						<>
+							<DepartmentProfilePage />
 						</>
 					}
 				/>
